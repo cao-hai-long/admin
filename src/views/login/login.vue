@@ -47,6 +47,7 @@
 	</div>
 </template>
 <script>
+	import sha1 from "js-sha1";
 	import {
 		Message
 	} from 'element-ui';
@@ -274,14 +275,16 @@
 			const login = (() => {
 				let repuestData = {
 					username: ruleForm.username,
-					password: ruleForm.password,
+					password: sha1(ruleForm.password),
 					code: ruleForm.code
-				}
-				root.$store.dispatch('app/login', repuestData).then(response => {
+				};
+				root.$store.dispatch("login",repuestData).then(req => {
 					// 页面跳转
+					console.log('登录成功')
+					console.log(req)
 					root.$router.push({
-						name: 'Console'
-					})
+							name: 'index'
+						})
 				}).catch(error => {});
 			})
 			/**
@@ -290,7 +293,7 @@
 			const register = (() => {
 				let requestData = {
 					username: ruleForm.username,
-					password: ruleForm.password,
+					password: sha1(ruleForm.password),
 					code: ruleForm.code,
 					module: 'register'
 				}

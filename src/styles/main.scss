@@ -1,3 +1,5 @@
+@import "element.scss";
+
 @charset "utf-8";
 
 // 变量存储
@@ -218,4 +220,27 @@ input {
         clear:both;
         height:0;
     }
+}
+
+// 后台框架尺寸
+// 菜单的宽度
+$navMenu:250px;
+$navMenuMin:64px;
+$layoutHeader:75px;
+
+@mixin webkit($type,$value) {
+	-webkit-#{$type}: $value;
+	-moz-#{$type}:$value ;
+	-o-#{$type}:$value ;
+	-ms-#{$type}:$value ;
+	#{$type}:$value ;
+}
+
+
+
+.pull-left{
+	float: left;
+}
+.pull-right{
+	float: right;
 }
