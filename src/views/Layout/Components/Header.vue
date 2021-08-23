@@ -6,25 +6,38 @@
 		<div class="pull-right">
 			<div class="user-info pull-left">
 				<img src="../../../assets/user.jpg" alt="">
-				管理员
+				{{userNamne}}
 			</div>
-			<div class="heihgt-icon pull-left"><svg-icon iconClass="exit" className="exit"></svg-icon></div>
+			<div class="heihgt-icon pull-left" @click="exit"><svg-icon iconClass="exit" className="exit"></svg-icon></div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import { computed } from "@vue/composition-api"
 	export default{
 		name:"Header",
 		setup(props,{root}){
+			const userNamne = computed(()=> root.$store.state.app.username)
 			const navMenuState = () =>{
 				// mutations  commit调用  
-				root.$store.commit('SET_COLLAPSE')
+				root.$store.commit('app/SET_COLLAPSE')
 				// 异步  actions   dispatch调用
 				// root.$store.dispatch('setMenuStatus')
 			}
+			// 退出
+			const exit = () =>{
+				root.$store.dispatch("app/exit").then(()=>{
+					root.$router.push({
+							name:'Login'
+						}
+						)
+				})
+			}
 			return {
 				navMenuState,
+				userNamne,
+				exit
 			}
 		}
 	}

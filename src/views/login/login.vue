@@ -278,12 +278,10 @@
 					password: sha1(ruleForm.password),
 					code: ruleForm.code
 				};
-				root.$store.dispatch("login",repuestData).then(req => {
+				root.$store.dispatch("app/Login",repuestData).then(req => {
 					// 页面跳转
-					console.log('登录成功')
-					console.log(req)
 					root.$router.push({
-							name: 'index'
+							name: 'layout'
 						})
 				}).catch(error => {});
 			})

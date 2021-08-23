@@ -56,7 +56,7 @@ module.exports = {
     proxy: {
       '/api': {
           // 此处的写法，目的是为了 将 /api 替换成 https://www.baidu.com/  
-          target: 'http://www.web-jshtml.cn/productapi', //api服务器地址 http://www.web.jshtml.cn/api
+          target: 'http://www.web-jshtml.cn/productapi/token', //api服务器地址 http://www.web.jshtml.cn/api
           // 允许跨域
           changeOrigin: true, 
           pathRewrite: {
